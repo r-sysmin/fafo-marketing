@@ -277,6 +277,48 @@ export type Database = {
           },
         ]
       }
+      campaign_audiences: {
+        Row: {
+          created_at: string
+          created_by: string
+          description: string | null
+          estimated_size: number | null
+          id: string
+          match_type: string
+          name: string
+          org_id: string
+          rules: Json
+          updated_at: string
+          workspace_id: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          description?: string | null
+          estimated_size?: number | null
+          id?: string
+          match_type?: string
+          name: string
+          org_id: string
+          rules?: Json
+          updated_at?: string
+          workspace_id: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          description?: string | null
+          estimated_size?: number | null
+          id?: string
+          match_type?: string
+          name?: string
+          org_id?: string
+          rules?: Json
+          updated_at?: string
+          workspace_id?: string
+        }
+        Relationships: []
+      }
       campaign_requests: {
         Row: {
           brief: string
