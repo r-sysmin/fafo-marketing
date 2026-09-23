@@ -20,6 +20,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ChecklistSection } from "@/components/workspace/ChecklistSection";
 import { BudgetSection } from "@/components/workspace/BudgetSection";
 import { AssetsSection } from "@/components/workspace/AssetsSection";
+import { AudienceSection } from "@/components/workspace/AudienceSection";
 import { VariantsSection } from "@/components/workspace/VariantsSection";
 import { ResultsSection } from "@/components/workspace/ResultsSection";
 import { WebhooksSection } from "@/components/workspace/WebhooksSection";
@@ -79,7 +80,7 @@ type Activity = {
 type StageOpt = { key: string; label: string; color: string; position: number };
 
 
-type Tab = "plan" | "flow" | "assets" | "variants" | "results" | "settings";
+type Tab = "plan" | "audience" | "flow" | "assets" | "variants" | "results" | "settings";
 
 function WorkspaceDetail() {
   const { id } = useParams({ from: "/_app/campaigns/$id" });
@@ -504,6 +505,7 @@ function WorkspaceDetail() {
         {(
           [
             { id: "plan", label: "Plan" },
+            { id: "audience", label: "Audience" },
             { id: "flow", label: "Flow" },
             { id: "assets", label: `Assets${pendingApprovals > 0 ? ` (${pendingApprovals})` : ""}` },
             { id: "variants", label: "Variants" },
@@ -682,6 +684,7 @@ function WorkspaceDetail() {
           <FlowCanvas workspaceId={ws.id} orgId={ws.org_id} />
         </Suspense>
       )}
+      {tab === "audience" && <AudienceSection workspaceId={ws.id} orgId={ws.org_id} />}
       {tab === "assets" && <AssetsSection workspaceId={ws.id} orgId={ws.org_id} />}
       {tab === "variants" && <VariantsSection workspaceId={ws.id} orgId={ws.org_id} />}
       {tab === "results" && (
